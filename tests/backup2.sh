@@ -18,5 +18,7 @@ else
         mkdir $NOMBRE_DIRECTORIO
 fi
 
-cd $RUTA 
-mysqldump -u admin -padmin -h localhost --add-drop-database --no-create-db --databases wordpress > dumpBaseDatos.sql
+cd $RUTA
+echo "Inicio copia seguridad bbdd"
+mysqldump -alv -u admin -padmin -h localhost --add-drop-database --no-create-db --databases wordpress > dumpBaseDatos.sql
+echo "Fin copia seguridad bbdd"
