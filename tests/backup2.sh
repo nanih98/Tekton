@@ -1,8 +1,8 @@
 #! /bin/bash
 
-echo 'Inicio copia seguridad contenido wordpress'
+echo 'Inicio copia seguridad base de datos wordpress'
 
-dir="/copiaseguridad/backups"
+dir="/opt/app-root/src/copiaseguridad/backups"
 cd $dir
 #mkdir test2_$(date +"%F_%T")
 NOMBRE_DIRECTORIO="copiaseguridad_$(date +"%F")"
@@ -15,11 +15,8 @@ then
     echo "Ya existe el directorio"
 else
     echo "NO existe el directorio"
-        mkdir $RUTA
+        mkdir $NOMBRE_DIRECTORIO
 fi
 
-cd /var/www/html/
-echo "Inicializando backup del contenido wordpress"
-tar -czf $RUTA'/contenidowp.tar.gz' .
-echo "Backup finalizado"
-
+#cd $RUTA
+#mysqldump -u admin -padmin -h localhost --add-drop-database --no-create-db --databases wordpress > dumpBaseDatos.sql
